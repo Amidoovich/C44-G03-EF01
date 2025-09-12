@@ -26,6 +26,10 @@ namespace S1.Context
         }
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Department> Departments {  get; set; }
+        public DbSet<Project> Projects { get; set; }
+      
+
 
     }
 }

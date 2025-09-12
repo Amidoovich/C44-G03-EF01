@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using S1.Context;
 
@@ -10,9 +11,11 @@ using S1.Context;
 namespace S1.Migrations
 {
     [DbContext(typeof(CompanyG01DBContext))]
-    partial class CompanyG01DBContextModelSnapshot : ModelSnapshot
+    [Migration("20250912161511_RevoProductTable")]
+    partial class RevoProductTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
