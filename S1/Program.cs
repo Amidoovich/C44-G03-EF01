@@ -21,6 +21,8 @@ namespace S1
             //}
 
             using CompanyG01DBContext dbContext = new CompanyG01DBContext();
+
+            //dbContext.Employees.Where(E => E.Id == 1);
         }
     }
 }
