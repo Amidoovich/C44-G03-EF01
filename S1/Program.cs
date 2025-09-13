@@ -1,10 +1,13 @@
-﻿namespace S1
+﻿using S1.Context;
+
+namespace S1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            using ItiDbContext dbContext = new ItiDbContext();
+
         }
     }
 }
