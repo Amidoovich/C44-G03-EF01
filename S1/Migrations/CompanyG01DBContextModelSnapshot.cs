@@ -36,22 +36,38 @@ namespace S1.Migrations
 
             modelBuilder.Entity("S1.Models.Employee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("EmpId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmpId"));
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<string>("EmpName")
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("Varchar")
+                        .HasColumnName("EmployeeName");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Salary")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(10,2)")
+                        .HasColumnName("EmployeeSalary");
 
-                    b.HasKey("Id");
+                    b.HasKey("EmpId");
 
                     b.ToTable("Employees");
                 });

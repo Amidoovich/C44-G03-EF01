@@ -11,8 +11,8 @@ using S1.Context;
 namespace S1.Migrations
 {
     [DbContext(typeof(CompanyG01DBContext))]
-    [Migration("20250912160144_AddDepartmentTable")]
-    partial class AddDepartmentTable
+    [Migration("20250913154502_Intial Create")]
+    partial class IntialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,24 +39,53 @@ namespace S1.Migrations
 
             modelBuilder.Entity("S1.Models.Employee", b =>
                 {
+                    b.Property<int>("EmpId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmpId"));
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("Varchar")
+                        .HasColumnName("EmployeeName");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Salary")
+                        .HasColumnType("decimal(10,2)")
+                        .HasColumnName("EmployeeSalary");
+
+                    b.HasKey("EmpId");
+
+                    b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("S1.Models.Project", b =>
+                {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("EmpName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Salary")
-                        .HasColumnType("decimal(18,2)");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Projects");
                 });
 #pragma warning restore 612, 618
         }
